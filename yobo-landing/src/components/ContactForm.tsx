@@ -1,7 +1,57 @@
+import { useState, FormEvent } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "../context/ThemeContext";
 import { content } from "../data/content";
-import { Mail, Phone, Send, MapPin, Clock, ArrowRight, MessageCircle } from "lucide-react";
+import { Mail, Phone, Send, MapPin, Clock, ArrowRight, MessageCircle, CheckCircle } from "lucide-react";
+
+// French success message component
+const SuccessMessage = ({ isDark, theme }: { isDark: boolean; theme: any }) => (
+  <motion.div 
+    initial={{ opacity: 0, y: 10 }} 
+    animate={{ opacity: 1, y: 0 }} 
+    style={{ 
+      marginTop: "20px", 
+      padding: "16px", 
+      background: isDark ? "rgba(34, 197, 94, 0.2)" : "rgba(34, 197, 94, 0.1)", 
+      border: "1px solid rgba(34, 197, 94, 0.3)",
+      borderRadius: "10px", 
+      display: "flex", 
+      alignItems: "center", 
+      gap: "12px",
+      color: theme.text
+    }}
+  >
+    <CheckCircle size={24} color="#22c55e" />
+    <div>
+      <p style={{ fontWeight: 600, margin: 0 }}>Message envoyé avec succès !</p>
+      <p style={{ fontSize: "14px", margin: "4px 0 0 0", opacity: 0.8 }}>Nous vous répondrons sous 24 heures.</p>
+    </div>
+  </motion.div>
+);
+
+// Form submission handler
+const handleFormSubmit = async (e: FormEvent<HTMLFormElement>, setSubmitted: (value: boolean) => void) => {
+  e.preventDefault();
+  const form = e.currentTarget;
+  const formData = new FormData(form);
+  
+  try {
+    const response = await fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams(formData as any).toString()
+    });
+    
+    if (response.ok) {
+      setSubmitted(true);
+      form.reset();
+      // Hide success message after 5 seconds
+      setTimeout(() => setSubmitted(false), 5000);
+    }
+  } catch (error) {
+    console.error("Form submission error:", error);
+  }
+};
 
 const FormInput = ({ label, name, type = "text", placeholder, required, value, onChange, isDark, theme }: any) => (
   <div style={{ marginBottom: "16px" }}>
@@ -22,6 +72,7 @@ const FormTextArea = ({ label, name, placeholder, required, value, onChange, isD
 // Layout 1: Minimal - Simple centered form
 function ContactMinimal() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" style={{ padding: "100px 24px", background: "#fafafa" }}>
@@ -29,7 +80,9 @@ function ContactMinimal() {
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
 
-        <form name="contact-minimal" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: "#fff", padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+        <form name="contact-minimal" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+              onSubmit={(e) => handleFormSubmit(e, setSubmitted)}
+              style={{ background: "#fff", padding: "32px", borderRadius: "12px", textAlign: "left" }}>
           <input type="hidden" name="form-name" value="contact-minimal" />
           <p style={{ display: "none" }}>
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -40,6 +93,7 @@ function ContactMinimal() {
           <FormTextArea label="Message" name="message" placeholder="Votre message..." isDark={false} theme={theme} />
           <button type="submit" style={{ width: "100%", padding: "16px", background: theme.primary, color: "#fff", border: "none", borderRadius: "10px", fontSize: "16px", fontWeight: 600, cursor: "pointer" }}>Envoyer</button>
         </form>
+        {submitted && <SuccessMessage isDark={false} theme={theme} />}
       </div>
     </section>
   );
@@ -48,6 +102,7 @@ function ContactMinimal() {
 // Layout 2: Soft - Side by side with info cards
 function ContactSoft() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" style={{ padding: "100px 24px", background: "linear-gradient(180deg, #f5f3ff 0%, #ede9fe 100%)" }}>
@@ -78,7 +133,8 @@ function ContactSoft() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             style={{ background: "#fff", borderRadius: "24px", padding: "40px", boxShadow: "0 10px 40px rgba(99, 102, 241, 0.1)" }}>
-            <form name="contact-soft" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-soft" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+                  onSubmit={(e) => handleFormSubmit(e, setSubmitted)}>
               <input type="hidden" name="form-name" value="contact-soft" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -93,6 +149,7 @@ function ContactSoft() {
                 <Send size={18} /> Envoyer le message
               </button>
             </form>
+            {submitted && <SuccessMessage isDark={false} theme={theme} />}
           </motion.div>
         </div>
       </div>
@@ -103,6 +160,7 @@ function ContactSoft() {
 // Layout 3: Bold - Full width with dark section
 function ContactBold() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact">
@@ -125,7 +183,8 @@ function ContactBold() {
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             style={{ background: "#fff", borderRadius: "24px", padding: "40px" }}>
-            <form name="contact-bold" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-bold" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+                  onSubmit={(e) => handleFormSubmit(e, setSubmitted)}>
               <input type="hidden" name="form-name" value="contact-bold" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -137,6 +196,7 @@ function ContactBold() {
                 Réserver ma consultation
               </button>
             </form>
+            {submitted && <SuccessMessage isDark={false} theme={theme} />}
           </motion.div>
         </div>
       </div>
@@ -147,6 +207,7 @@ function ContactBold() {
 // Layout 4: Gradient - Floating card with orbs
 function ContactGradient() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" style={{ padding: "120px 24px", background: theme.background, position: "relative", overflow: "hidden" }}>
@@ -161,7 +222,8 @@ function ContactGradient() {
 
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           style={{ background: `linear-gradient(135deg, ${theme.gradientStart}22, ${theme.gradientEnd}11)`, backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "32px", padding: "48px", maxWidth: "600px", margin: "0 auto" }}>
-          <form name="contact-gradient" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form name="contact-gradient" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+                onSubmit={(e) => handleFormSubmit(e, setSubmitted)}>
             <input type="hidden" name="form-name" value="contact-gradient" />
             <p style={{ display: "none" }}>
               <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -174,6 +236,7 @@ function ContactGradient() {
               Envoyer <ArrowRight size={20} />
             </button>
           </form>
+          {submitted && <SuccessMessage isDark={true} theme={theme} />}
         </motion.div>
 
         <div style={{ display: "flex", justifyContent: "center", gap: "40px", marginTop: "48px" }}>
@@ -193,6 +256,7 @@ function ContactGradient() {
 // Layout 5: Glass - Multi-step feel with glass panels
 function ContactGlass() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" style={{ padding: "120px 24px", background: theme.background, position: "relative", overflow: "hidden" }}>
@@ -224,7 +288,8 @@ function ContactGlass() {
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "28px", padding: "40px" }}>
-            <form name="contact-glass" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-glass" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+                  onSubmit={(e) => handleFormSubmit(e, setSubmitted)}>
               <input type="hidden" name="form-name" value="contact-glass" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -237,6 +302,7 @@ function ContactGlass() {
                 Envoyer
               </button>
             </form>
+            {submitted && <SuccessMessage isDark={true} theme={theme} />}
           </motion.div>
         </div>
       </div>
@@ -247,6 +313,7 @@ function ContactGlass() {
 // Layout 6: Premium - Sophisticated split layout
 function ContactPremium() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" style={{ padding: "120px 24px", background: theme.background }}>
@@ -286,7 +353,8 @@ function ContactPremium() {
             style={{ background: theme.cardBg, border: `1px solid ${theme.secondary}22`, borderRadius: "24px", padding: "48px", position: "relative" }}>
             <div style={{ position: "absolute", top: 0, left: "48px", right: "48px", height: "3px", background: `linear-gradient(90deg, ${theme.secondary}, ${theme.primaryLight})`, borderRadius: "0 0 4px 4px" }} />
 
-            <form name="contact-premium" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-premium" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+                  onSubmit={(e) => handleFormSubmit(e, setSubmitted)}>
               <input type="hidden" name="form-name" value="contact-premium" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -301,6 +369,7 @@ function ContactPremium() {
                 Envoyer le message
               </button>
             </form>
+            {submitted && <SuccessMessage isDark={true} theme={theme} />}
           </motion.div>
         </div>
       </div>
@@ -311,6 +380,7 @@ function ContactPremium() {
 // Original Layout - Simple centered
 function ContactOriginal() {
   const { theme } = useTheme();
+  const [submitted, setSubmitted] = useState(false);
 
   return (
     <section id="contact" style={{ padding: "100px 24px", background: theme.background }}>
@@ -318,7 +388,9 @@ function ContactOriginal() {
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
 
-        <form name="contact-original" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: theme.cardBg, padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+        <form name="contact-original" method="POST" data-netlify="true" data-netlify-honeypot="bot-field"
+              onSubmit={(e) => handleFormSubmit(e, setSubmitted)}
+              style={{ background: theme.cardBg, padding: "32px", borderRadius: "12px", textAlign: "left" }}>
           <input type="hidden" name="form-name" value="contact-original" />
           <p style={{ display: "none" }}>
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
@@ -329,6 +401,7 @@ function ContactOriginal() {
           <FormTextArea label="Message" name="message" placeholder="Votre message..." isDark={false} theme={theme} />
           <button type="submit" style={{ width: "100%", padding: "16px", background: theme.primary, color: "#fff", border: "none", borderRadius: "10px", fontSize: "16px", fontWeight: 600, cursor: "pointer" }}>Envoyer</button>
         </form>
+        {submitted && <SuccessMessage isDark={false} theme={theme} />}
       </div>
     </section>
   );
