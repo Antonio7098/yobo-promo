@@ -29,7 +29,8 @@ function ContactMinimal() {
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
 
-        <form name="contact-minimal" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: "#fff", padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+        <form name="contact-minimal" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: "#fff", padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+          <input type="hidden" name="form-name" value="contact-minimal" />
           <p style={{ display: "none" }}>
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
           </p>
@@ -77,7 +78,8 @@ function ContactSoft() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             style={{ background: "#fff", borderRadius: "24px", padding: "40px", boxShadow: "0 10px 40px rgba(99, 102, 241, 0.1)" }}>
-            <form name="contact-soft" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-soft" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact-soft" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
               </p>
@@ -123,7 +125,8 @@ function ContactBold() {
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             style={{ background: "#fff", borderRadius: "24px", padding: "40px" }}>
-            <form name="contact-bold" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-bold" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact-bold" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
               </p>
@@ -158,7 +161,8 @@ function ContactGradient() {
 
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           style={{ background: `linear-gradient(135deg, ${theme.gradientStart}22, ${theme.gradientEnd}11)`, backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "32px", padding: "48px", maxWidth: "600px", margin: "0 auto" }}>
-          <form name="contact-gradient" data-netlify="true" data-netlify-honeypot="bot-field">
+          <form name="contact-gradient" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+            <input type="hidden" name="form-name" value="contact-gradient" />
             <p style={{ display: "none" }}>
               <label>Don't fill this out if you're human: <input name="bot-field" /></label>
             </p>
@@ -220,7 +224,8 @@ function ContactGlass() {
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "28px", padding: "40px" }}>
-            <form name="contact-glass" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-glass" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact-glass" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
               </p>
@@ -281,7 +286,8 @@ function ContactPremium() {
             style={{ background: theme.cardBg, border: `1px solid ${theme.secondary}22`, borderRadius: "24px", padding: "48px", position: "relative" }}>
             <div style={{ position: "absolute", top: 0, left: "48px", right: "48px", height: "3px", background: `linear-gradient(90deg, ${theme.secondary}, ${theme.primaryLight})`, borderRadius: "0 0 4px 4px" }} />
 
-            <form name="contact-premium" data-netlify="true" data-netlify-honeypot="bot-field">
+            <form name="contact-premium" method="POST" data-netlify="true" data-netlify-honeypot="bot-field">
+              <input type="hidden" name="form-name" value="contact-premium" />
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
               </p>
@@ -312,7 +318,8 @@ function ContactOriginal() {
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
 
-        <form name="contact-original" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: theme.cardBg, padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+        <form name="contact-original" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: theme.cardBg, padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+          <input type="hidden" name="form-name" value="contact-original" />
           <p style={{ display: "none" }}>
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
           </p>
