@@ -29,9 +29,10 @@ function ContactMinimal() {
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
 
-        <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST" style={{ background: "#fff", padding: "32px", borderRadius: "12px", textAlign: "left" }}>
-          <input type="hidden" name="_subject" value="Nouveau message de Yobo Promo" />
-          <input type="hidden" name="_template" value="table" />
+        <form name="contact-minimal" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: "#fff", padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+          <p style={{ display: "none" }}>
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
           <FormInput label="Nom" name="name" placeholder="Votre nom" required isDark={false} theme={theme} />
           <FormInput label="Email" name="email" type="email" placeholder="votre@email.com" required isDark={false} theme={theme} />
           <FormInput label="Téléphone" name="phone" type="tel" placeholder="(514) 000-0000" isDark={false} theme={theme} />
@@ -76,9 +77,10 @@ function ContactSoft() {
 
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             style={{ background: "#fff", borderRadius: "24px", padding: "40px", boxShadow: "0 10px 40px rgba(99, 102, 241, 0.1)" }}>
-            <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Nouveau message de Yobo Promo" />
-              <input type="hidden" name="_template" value="table" />
+            <form name="contact-soft" data-netlify="true" data-netlify-honeypot="bot-field">
+              <p style={{ display: "none" }}>
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                 <FormInput name="name" placeholder="Votre nom" required isDark={false} theme={theme} />
                 <FormInput name="email" type="email" placeholder="Votre email" required isDark={false} theme={theme} />
@@ -121,9 +123,10 @@ function ContactBold() {
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             style={{ background: "#fff", borderRadius: "24px", padding: "40px" }}>
-            <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Nouvelle demande de consultation - Yobo Promo" />
-              <input type="hidden" name="_template" value="table" />
+            <form name="contact-bold" data-netlify="true" data-netlify-honeypot="bot-field">
+              <p style={{ display: "none" }}>
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </p>
               <FormInput name="name" placeholder="Nom complet" required isDark={false} theme={theme} />
               <FormInput name="email" type="email" placeholder="Email professionnel" required isDark={false} theme={theme} />
               <FormInput name="phone" type="tel" placeholder="Numéro de téléphone" isDark={false} theme={theme} />
@@ -155,9 +158,10 @@ function ContactGradient() {
 
         <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
           style={{ background: `linear-gradient(135deg, ${theme.gradientStart}22, ${theme.gradientEnd}11)`, backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: "32px", padding: "48px", maxWidth: "600px", margin: "0 auto" }}>
-          <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Nouveau message de Yobo Promo" />
-            <input type="hidden" name="_template" value="table" />
+          <form name="contact-gradient" data-netlify="true" data-netlify-honeypot="bot-field">
+            <p style={{ display: "none" }}>
+              <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+            </p>
             <FormInput name="name" placeholder="Votre nom" required isDark={true} theme={theme} />
             <FormInput name="email" type="email" placeholder="Votre email" required isDark={true} theme={theme} />
             <FormInput name="phone" type="tel" placeholder="Téléphone" isDark={true} theme={theme} />
@@ -216,9 +220,10 @@ function ContactGlass() {
 
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
             style={{ background: "rgba(255,255,255,0.08)", backdropFilter: "blur(20px)", border: "1px solid rgba(255,255,255,0.15)", borderRadius: "28px", padding: "40px" }}>
-            <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Nouveau message de Yobo Promo" />
-              <input type="hidden" name="_template" value="table" />
+            <form name="contact-glass" data-netlify="true" data-netlify-honeypot="bot-field">
+              <p style={{ display: "none" }}>
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </p>
               <FormInput name="name" placeholder="Nom complet" required isDark={true} theme={theme} />
               <FormInput name="email" type="email" placeholder="Email" required isDark={true} theme={theme} />
               <FormInput name="phone" type="tel" placeholder="Téléphone" isDark={true} theme={theme} />
@@ -276,9 +281,10 @@ function ContactPremium() {
             style={{ background: theme.cardBg, border: `1px solid ${theme.secondary}22`, borderRadius: "24px", padding: "48px", position: "relative" }}>
             <div style={{ position: "absolute", top: 0, left: "48px", right: "48px", height: "3px", background: `linear-gradient(90deg, ${theme.secondary}, ${theme.primaryLight})`, borderRadius: "0 0 4px 4px" }} />
 
-            <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST">
-              <input type="hidden" name="_subject" value="Nouveau message de Yobo Promo" />
-              <input type="hidden" name="_template" value="table" />
+            <form name="contact-premium" data-netlify="true" data-netlify-honeypot="bot-field">
+              <p style={{ display: "none" }}>
+                <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+              </p>
               <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                 <FormInput label="Nom" name="name" placeholder="Votre nom" required isDark={true} theme={theme} />
                 <FormInput label="Email" name="email" type="email" placeholder="votre@email.com" required isDark={true} theme={theme} />
@@ -306,9 +312,10 @@ function ContactOriginal() {
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
 
-        <form action="https://formsubmit.co/antoniorees74@gmail.com" method="POST" style={{ background: theme.cardBg, padding: "32px", borderRadius: "12px", textAlign: "left" }}>
-          <input type="hidden" name="_subject" value="Nouveau message de Yobo Promo" />
-          <input type="hidden" name="_template" value="table" />
+        <form name="contact-original" data-netlify="true" data-netlify-honeypot="bot-field" style={{ background: theme.cardBg, padding: "32px", borderRadius: "12px", textAlign: "left" }}>
+          <p style={{ display: "none" }}>
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
           <FormInput label="Nom" name="name" placeholder="Votre nom" required isDark={false} theme={theme} />
           <FormInput label="Email" name="email" type="email" placeholder="votre@email.com" required isDark={false} theme={theme} />
           <FormInput label="Téléphone" name="phone" type="tel" placeholder="(514) 000-0000" isDark={false} theme={theme} />
