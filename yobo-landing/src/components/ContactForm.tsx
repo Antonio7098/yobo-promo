@@ -75,7 +75,7 @@ function ContactMinimal() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" style={{ padding: "100px 24px", background: "#fafafa" }}>
+    <section id="contact" style={{ padding: "100px 24px", background: "#fafafa", scrollMarginTop: "80px" }}>
       <div style={{ maxWidth: "500px", margin: "0 auto", textAlign: "center" }}>
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
@@ -105,7 +105,7 @@ function ContactSoft() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" style={{ padding: "100px 24px", background: "linear-gradient(180deg, #f5f3ff 0%, #ede9fe 100%)" }}>
+    <section id="contact" style={{ padding: "100px 24px", background: "linear-gradient(180deg, #f5f3ff 0%, #ede9fe 100%)", scrollMarginTop: "80px" }}>
       <div style={{ maxWidth: "1100px", margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: "60px" }}>
           <span style={{ display: "inline-block", padding: "8px 16px", background: "#fff", borderRadius: "100px", fontSize: "14px", fontWeight: 600, color: theme.primary, marginBottom: "16px" }}>Contact</span>
@@ -163,7 +163,7 @@ function ContactBold() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact">
+    <section id="contact" style={{ scrollMarginTop: "80px" }}>
       <div style={{ background: theme.backgroundAlt, padding: "80px 24px", color: "#fff" }}>
         <div style={{ maxWidth: "1200px", margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "center" }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -210,7 +210,7 @@ function ContactGradient() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" style={{ padding: "120px 24px", background: theme.background, position: "relative", overflow: "hidden" }}>
+    <section id="contact" style={{ padding: "120px 24px", background: theme.background, position: "relative", overflow: "hidden", scrollMarginTop: "80px" }}>
       <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 10, repeat: Infinity }}
         style={{ position: "absolute", top: "10%", right: "10%", width: "400px", height: "400px", borderRadius: "50%", background: `radial-gradient(circle, ${theme.gradientEnd}33 0%, transparent 70%)`, filter: "blur(60px)" }} />
 
@@ -259,7 +259,7 @@ function ContactGlass() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" style={{ padding: "120px 24px", background: theme.background, position: "relative", overflow: "hidden" }}>
+    <section id="contact" style={{ padding: "120px 24px", background: theme.background, position: "relative", overflow: "hidden", scrollMarginTop: "80px" }}>
       {[{ top: "20%", left: "5%" }, { bottom: "10%", right: "10%" }].map((pos, i) => (
         <motion.div key={i} animate={{ y: [0, -30, 0] }} transition={{ duration: 6 + i * 2, repeat: Infinity }}
           style={{ position: "absolute", ...pos, width: "300px", height: "300px", borderRadius: "50%", background: `radial-gradient(circle, ${i === 0 ? theme.gradientStart : theme.accent}33 0%, transparent 70%)`, filter: "blur(60px)" }} />
@@ -316,7 +316,7 @@ function ContactPremium() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" style={{ padding: "120px 24px", background: theme.background }}>
+    <section id="contact" style={{ padding: "120px 24px", background: theme.background, scrollMarginTop: "80px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "80px", alignItems: "start" }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
@@ -383,7 +383,7 @@ function ContactOriginal() {
   const [submitted, setSubmitted] = useState(false);
 
   return (
-    <section id="contact" style={{ padding: "100px 24px", background: theme.background }}>
+    <section id="contact" style={{ padding: "100px 24px", background: theme.background, scrollMarginTop: "80px" }}>
       <div style={{ maxWidth: "500px", margin: "0 auto", textAlign: "center" }}>
         <h2 style={{ fontSize: "32px", fontWeight: 700, color: theme.text, marginBottom: "12px" }}>Contactez-nous</h2>
         <p style={{ fontSize: "16px", color: theme.textMuted, marginBottom: "40px" }}>Nous répondons sous 24h</p>
