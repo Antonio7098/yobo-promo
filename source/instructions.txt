@@ -1,0 +1,4 @@
+I want you to take this landing pahe and make three variations. You need to preserve all the twxt content to the word, so visit https://yobopromo.framer.website and create a document with all the content you need to include. You need to improve the layout and sy=tyling, make it clean, proffessional, moder
+Objective : should really be to bring people to fill the learn more fillable forms : with name, email, phone number. 
+You should be able to tb between the variations from the top. Focus on maximum abstraction, making reusable components that you do variations of in the diffetent versions. Adhere to all frontend beest practices (vite). make it beutiful.
+I'd appreciate having a form directly on the website that captures name, email, phone (optional) : (Nom, courriel, numéro de téléphone), instead of the calendly link. 
