@@ -1,6 +1,5 @@
 import { ThemeProvider, useTheme } from "./context/ThemeContext";
 import {
-  VariationTabs,
   Header,
   Hero,
   Presence,
