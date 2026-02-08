@@ -161,7 +161,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [variation, setVariation] = useState<VariationType>(1);
+  const [variation, setVariation] = useState<VariationType>(6);
 
   return (
     <ThemeContext.Provider

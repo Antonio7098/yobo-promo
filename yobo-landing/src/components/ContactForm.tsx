@@ -318,7 +318,7 @@ function ContactPremium() {
   return (
     <section id="contact" style={{ padding: "120px 24px", background: theme.background, scrollMarginTop: "80px" }}>
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "80px", alignItems: "start" }}>
+        <div className="responsive-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1.5fr", gap: "80px", alignItems: "start" }}>
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "24px" }}>
               <div style={{ width: "40px", height: "2px", background: theme.secondary }} />
@@ -359,7 +359,7 @@ function ContactPremium() {
               <p style={{ display: "none" }}>
                 <label>Don't fill this out if you're human: <input name="bot-field" /></label>
               </p>
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
+              <div className="responsive-form-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "16px" }}>
                 <FormInput label="Nom" name="name" placeholder="Votre nom" required isDark={true} theme={theme} />
                 <FormInput label="Email" name="email" type="email" placeholder="votre@email.com" required isDark={true} theme={theme} />
               </div>

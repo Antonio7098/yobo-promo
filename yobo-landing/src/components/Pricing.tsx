@@ -365,7 +365,7 @@ function PricingPremium() {
           </h2>
         </motion.div>
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "24px" }}>
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))", gap: "24px" }}>
           {plans.map((plan, i) => (
             <motion.div key={plan.id}
               initial={{ opacity: 0, y: 30 }}
@@ -382,7 +382,7 @@ function PricingPremium() {
               <p style={{ fontSize: "13px", color: theme.textMuted, marginBottom: "24px" }}>{plan.subtitle}</p>
 
               <div style={{ padding: "20px 0", borderTop: "1px solid rgba(255,255,255,0.08)", borderBottom: "1px solid rgba(255,255,255,0.08)", marginBottom: "24px" }}>
-                <span style={{ fontSize: "36px", fontWeight: 900, color: i === 0 ? theme.secondary : theme.text }}>{plan.price}</span>
+                <span style={{ fontSize: "36px", fontWeight: 900, color: "#22c55e" }}>{plan.price}</span>
                 <p style={{ fontSize: "13px", color: "#22c55e", fontWeight: 500 }}>{plan.priceNote}</p>
               </div>
 

@@ -240,7 +240,7 @@ function HeroPremium() {
   return (
     <section style={{ minHeight: "100vh", background: theme.background, position: "relative", overflow: "hidden" }}>
       <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: "1px", background: `linear-gradient(90deg, transparent, ${theme.secondary}, transparent)` }} />
-      <div style={{ maxWidth: "1400px", margin: "0 auto", padding: "80px 24px", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "80px", alignItems: "center", minHeight: "100vh" }}>
+      <div className="responsive-grid" style={{ maxWidth: "1400px", margin: "0 auto", padding: "80px 24px", display: "grid", gridTemplateColumns: "1fr 1.2fr", gap: "80px", alignItems: "center", minHeight: "100vh" }}>
         <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.7 }}>
           <div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "32px" }}>
             <div style={{ width: "40px", height: "2px", background: theme.secondary }} />
@@ -273,7 +273,7 @@ function HeroPremium() {
               </motion.div>
               <p style={{ marginTop: "20px", fontSize: "14px", color: theme.textMuted }}>Voir notre showreel</p>
             </div>
-            <div style={{ position: "absolute", bottom: "24px", left: "24px", right: "24px", display: "flex", gap: "16px" }}>
+            <div className="hide-mobile" style={{ position: "absolute", bottom: "24px", left: "24px", right: "24px", display: "flex", gap: "16px" }}>
               {content.platforms.slice(0, 4).map((p, i) => (
                 <motion.div key={p} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 + i * 0.1 }}
                   style={{ width: "48px", height: "48px", background: "rgba(255,255,255,0.05)", backdropFilter: "blur(10px)", borderRadius: "12px", display: "flex", alignItems: "center", justifyContent: "center" }}>

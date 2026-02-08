@@ -19,7 +19,7 @@ export function Header() {
       transition={{ duration: 0.5 }}
       style={{
         position: "sticky",
-        top: "60px",
+        top: 0,
         left: 0,
         right: 0,
         zIndex: 100,
@@ -46,6 +46,7 @@ export function Header() {
         <Logo size="md" />
 
         <nav
+          className="hide-mobile"
           style={{
             display: "flex",
             alignItems: "center",
@@ -102,7 +103,7 @@ export function Header() {
           </a>
         </nav>
 
-        <Button onClick={scrollToContact} variant="primary" size="md">
+        <Button onClick={scrollToContact} variant="primary" size="sm">
           Prendre Rendez-Vous
         </Button>
       </div>

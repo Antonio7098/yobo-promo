@@ -38,10 +38,9 @@ function LandingPage() {
         fontFamily: theme.fontFamily,
         background: getBodyBackground(),
         minHeight: "100vh",
-        paddingTop: "48px", // Space for the fixed tabs
       }}
     >
-      <VariationTabs />
+      {/* <VariationTabs /> */}
       <Header />
       <main>
         <Hero />

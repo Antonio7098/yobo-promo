@@ -34,6 +34,7 @@ export function VariationTabs() {
         }}
       >
         <span
+          className="hide-mobile"
           style={{
             color: "#9ca3af",
             fontSize: "14px",
